@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EO_JS.MainPage"
+             NavigationPage.HasNavigationBar="False"
+             >
+
+    <ContentPage.Content>
+        <!--Grid Dividing Screen in 2 parts-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <!--Title on top-->
+            <Label Grid.Row="0" VerticalOptions="Start" HorizontalOptions="Center" Margin="16" Text="The Cat Encyclopedia" FontSize="20" TextColor="Black" />
+
+            <!--login screen with 3 entries and 2 buttons-->
+            <StackLayout Grid.Row="1" VerticalOptions="Center" Margin="16" Spacing="0">
+                
+                <Label Text="Username" FontFamily="Objektiv-Medium" TextColor="Black" Margin="0"/>
+                <Entry x:Name="entUsername" Placeholder="Username"  TextColor="Black" />
+                <Label Text="Password"   FontFamily="Objektiv-Medium" TextColor="Black" Margin="0"/>
+                <Entry x:Name="entPassword" Placeholder="Password" TextColor="Black" IsPassword="True" />
+
+                <Label Text="Origin" FontFamily="Objektiv-Medium" FontAttributes="Bold" TextColor="Black"  Margin="0,24,0,0"/>
+                <Picker x:Name="pickOrigin" Title="Select Origin" TextColor="#333" />
+                <Grid Margin="0,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnRegister" Text="REGISTER" TextColor="White" BackgroundColor="#FF9F80"  VerticalOptions="End" HorizontalOptions="Center"  IsEnabled="False"/>
+                    <Button Grid.Column="1" x:Name="btnLogin" Text="LOGIN" TextColor="White" BackgroundColor="#FF9F80"  VerticalOptions="End" HorizontalOptions="Center" IsEnabled="False"/>
+                </Grid>
+                
+            </StackLayout>
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EO_JS.Views.PopupFavourite"
+             xmlns:helper="clr-namespace:EO_JS.Helper"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+    <!--Grid Dividing Screen in 3 parts-->
+    <Grid Padding="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+            <RowDefinition Height="46"/>
+        </Grid.RowDefinitions>
+        <!--close icon in top left corner-->
+        <ImageButton  x:Name="btnBack" Grid.Row="0" VerticalOptions="Center" BackgroundColor="Transparent" HorizontalOptions="Start" Source="{FontImage FontFamily={StaticResource MaterialFontFamily}, Glyph={x:Static helper:IconFont.Close},Color=White, Size=28 }" Clicked="BtnBack_Clicked" />
+        <!--Pop up the selected image-->
+        <Image Grid.Row="1" VerticalOptions="CenterAndExpand"  x:Name="imgSelected" />
+        
+        <!--Details of the favourite (date and remove favourite)-->
+        <Grid Grid.Row="2" BackgroundColor="#99000000" Padding="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="lblCreated" TextColor="White" />
+            <Image Grid.Column="1" VerticalOptions="Start" HorizontalOptions="End" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="BtnFav_Tapped"
+                        NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+                <Image.Source>
+                    <FontImageSource
+                        Glyph="{x:Static helper:IconFont.HeartRemove}"
+                        FontFamily="{StaticResource MaterialFontFamily}"
+                        Size="28"
+                        Color="White"/>
+                </Image.Source>
+
+            </Image>
+        </Grid>
+    </Grid>
+</pages:PopupPage>

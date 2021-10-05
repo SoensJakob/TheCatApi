@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EO_JS.Views.OverviewPage"
+             xmlns:helper="clr-namespace:EO_JS.Helper"
+             NavigationPage.HasNavigationBar="False"
+             >
+
+
+
+    <ContentPage.Content>
+        <!--Grid Dividing Screen in 3 parts-->
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <!--TOPBAR with back button-->
+            <Frame Grid.Row="0" HasShadow="False"  BorderColor="#EEE" Padding="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="56"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="56"/>
+                    </Grid.ColumnDefinitions>
+                    <ImageButton  x:Name="btnBack" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="White"  Source="{FontImage FontFamily={StaticResource MaterialFontFamily}, Glyph={x:Static helper:IconFont.ArrowLeft},Color=#FF9F80, Size=28 }" Clicked="BtnBack_Clicked" />
+                    <Picker Grid.Column="1" x:Name="pickOrigin" Title="Select Origin" TextColor="#333" />
+
+                </Grid>
+            </Frame>
+
+            <!--Main List View-->
+            <ListView x:Name="lvwBreed" ItemSelected="LvwBreed_ItemSelected" Grid.Row="1"  HasUnevenRows="True" Margin="16,0,16,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid RowSpacing="0" Margin="0,16,0,16">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Image x:Name="ImgBreed" Aspect="AspectFill" HeightRequest="220" Source="{Binding Image.Url}" Margin="0,0,0,8" />
+                                <Label Grid.Row="1" Text="{Binding Name}" TextColor="Black" FontFamily="Objektiv-Medium" Margin="0,4,0,16"/>
+                                <Label Grid.Row="2" Text="{Binding Description}" TextColor="#888" Margin="0"/>
+                                <Label Grid.Row="3" Text="more.." TextColor="#444" Margin="0"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!--Bottom Navigation-->
+            <Frame Grid.Row="2" HasShadow="False" BorderColor="#EEE" Padding="0">
+                <Grid ColumnSpacing="0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0"  VerticalOptions="Center"  Padding="8" Spacing="0" >
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Home_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <ImageButton    VerticalOptions="EndAndExpand" HorizontalOptions="Center" BackgroundColor="White"  Source="{FontImage FontFamily={StaticResource MaterialFontFamily}, Glyph={x:Static helper:IconFont.Logout},Color=#FF9F80, Size=28 }" Clicked="Home_Tapped"/>
+                        <Label Text="Logout" TextColor="#333" FontSize="14" FontFamily="Objektiv-Medium" HorizontalOptions="Center" Margin="0"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1"  VerticalOptions="Center" Padding="8" Spacing="0">
+                        <ImageButton VerticalOptions="End" HorizontalOptions="Center" BackgroundColor="White"   Source="{FontImage FontFamily={StaticResource MaterialFontFamily}, Glyph={x:Static helper:IconFont.Magnify},Color=#FF9F80, Size=28 }" IsEnabled="False" />
+                        <Label Text="Search" TextColor="#333" FontSize="14" FontFamily="Objektiv-Medium" HorizontalOptions="Center" Margin="0"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2"  VerticalOptions="Center" Padding="8" Spacing="0">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Favourite_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <ImageButton  VerticalOptions="End" HorizontalOptions="Center" BackgroundColor="White" Source="{FontImage FontFamily={StaticResource MaterialFontFamily}, Glyph={x:Static helper:IconFont.Heart},Color=#FF9F80, Size=28 }" Clicked="Favourite_Tapped"/>
+                        <Label Text="Favourites" TextColor="#333" FontSize="14" FontFamily="Objektiv-Medium" HorizontalOptions="Center" VerticalOptions="Start" Margin="0"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

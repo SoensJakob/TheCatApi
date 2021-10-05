@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EO_JS.Views.FavouritePage"
+             xmlns:helper="clr-namespace:EO_JS.Helper"
+             NavigationPage.HasNavigationBar="False"
+             >
+
+    <ContentPage.Content>
+        <!--Grid Dividing Screen in 3 parts-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <!--TOPBAR with back button-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="56"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="56"/>
+                </Grid.ColumnDefinitions>
+                <ImageButton  x:Name="btnBack" Grid.Column="0" VerticalOptions="Center"  HorizontalOptions="Center" BackgroundColor="White"  Source="{FontImage FontFamily={StaticResource MaterialFontFamily}, Glyph={x:Static helper:IconFont.ArrowLeft},Color=#FF9F80, Size=28 }" Clicked="BtnBack_Clicked" />
+                <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="Favourites" FontSize="20" TextColor="Black" />
+            </Grid>
+            <!-- Flexlayout with Image binding -->
+            <Grid Grid.Row="1">
+                <ScrollView>
+                    <FlexLayout BindableLayout.ItemsSource="{Binding favourites}"
+                        x:Name="flexLayout"
+                        Wrap="Wrap"
+                        Direction="Row"
+                        JustifyContent="Center"
+                        AlignItems="Start"
+                        AlignContent="Start"
+                        >
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid HeightRequest="120" WidthRequest="120" Margin="4">
+                                    <Image  Source="{Binding Image.Url}" Aspect="AspectFill" >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Image_Tapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+
+                </ScrollView>
+
+
+            </Grid>
+            <!--Bottom Navigation-->
+            <Frame Grid.Row="2" HasShadow="False" BorderColor="#EEE" Padding="0">
+                <Grid ColumnSpacing="0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0"  VerticalOptions="Center"  Padding="8" Spacing="0" >
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Home_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <ImageButton    VerticalOptions="EndAndExpand" HorizontalOptions="Center" BackgroundColor="White"  Source="{FontImage FontFamily={StaticResource MaterialFontFamily}, Glyph={x:Static helper:IconFont.Logout},Color=#FF9F80, Size=28 }" Clicked="Home_Tapped"/>
+                        <Label Text="Logout" TextColor="#333" FontSize="14" FontFamily="Objektiv-Medium" HorizontalOptions="Center" Margin="0"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1"  VerticalOptions="Center" Padding="8" Spacing="0">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Search_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <ImageButton VerticalOptions="End" HorizontalOptions="Center" BackgroundColor="White"   Source="{FontImage FontFamily={StaticResource MaterialFontFamily}, Glyph={x:Static helper:IconFont.Magnify},Color=#FF9F80, Size=28 }"  Clicked="Search_Tapped"/>
+                        <Label Text="Search" TextColor="#333" FontSize="14" FontFamily="Objektiv-Medium" HorizontalOptions="Center" Margin="0"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2"  VerticalOptions="Center" Padding="8" Spacing="0">
+                        <ImageButton  VerticalOptions="End" HorizontalOptions="Center" BackgroundColor="White" Source="{FontImage FontFamily={StaticResource MaterialFontFamily}, Glyph={x:Static helper:IconFont.Heart},Color=#FF9F80, Size=28 }" IsEnabled="False"/>
+                        <Label Text="Favourites" TextColor="#333" FontSize="14" FontFamily="Objektiv-Medium" HorizontalOptions="Center" VerticalOptions="Start" Margin="0"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

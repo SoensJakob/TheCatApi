@@ -1,0 +1,67 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\1.png" />
+    <None Remove="Assets\2.png" />
+    <None Remove="Assets\3.png" />
+    <None Remove="Assets\4.png" />
+    <None Remove="Assets\5.png" />
+
+    <None Remove="Assets\materialdesignicons-webfont.ttf" />
+    <None Remove="Assets\Objektiv Mk1 W03 Medium.ttf" />
+    <None Remove="Assets\Objektiv Mk1 W03 Regular.ttf" />
+    <None Remove="Assets\Objektiv Mk1 W03 Thin.ttf" />
+    <None Remove="Assets\Objektiv Mk2 W03 Light.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\1.png" />
+    <EmbeddedResource Include="Assets\2.png" />
+    <EmbeddedResource Include="Assets\3.png" />
+    <EmbeddedResource Include="Assets\4.png" />
+    <EmbeddedResource Include="Assets\5.png" />
+    <EmbeddedResource Include="Assets\materialdesignicons-webfont.ttf" />
+    <EmbeddedResource Include="Assets\Objektiv Mk1 W03 Medium.ttf" />
+    <EmbeddedResource Include="Assets\Objektiv Mk1 W03 Regular.ttf" />
+    <EmbeddedResource Include="Assets\Objektiv Mk1 W03 Thin.ttf" />
+    <EmbeddedResource Include="Assets\Objektiv Mk2 W03 Light.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.7" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\PopUpFavourite.xaml.cs">
+      <DependentUpon>PopUpFavourite.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\DetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\FavouritePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\OverviewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PopUpFavourite.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
